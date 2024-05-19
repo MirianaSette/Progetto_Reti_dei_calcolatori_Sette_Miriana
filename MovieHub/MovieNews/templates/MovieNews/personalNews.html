@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Moderno</title>
+  {% load static %}
+<link rel="stylesheet" href="{% static 'MovieNews/PersonalNews/news.css' %}">
+</head>
+<body>
+
+<nav class="user-menu">
+  <span>Ciao, [NomeUtente]</span>
+  <a href="canali.html">Canali</a>
+  <a href="logout.html">Logout</a>
+</nav>
+
+<main class="article-container">
+  <article class="article">
+    <img src="immagini sparse/cinemafilm.jpg" alt="Descrizione Immagine 1">
+    <div class="article-content">
+      <h2>Titolo Articolo 1</h2>
+      <p class="description">Breve descrizione dell'articolo 1... <span class="more">Leggi di più</span></p>
+      <p class="full-text hidden">Testo completo dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
+        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
+        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
+        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
+        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
+        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
+        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...</p>
+    </div>
+  </article>
+
+  <article class="article">
+    <img src="immagini sparse/cinemafilm.jpg" alt="Descrizione Immagine 2">
+    <div class="article-content">
+      <h2>Titolo Articolo 2</h2>
+      <p class="description">Breve descrizione dell'articolo 2... <span class="more">Leggi di più</span></p>
+      <p class="full-text hidden">Testo completo dell'articolo 2...</p>
+    </div>
+  </article>
+</main>
+
+<script>
+  document.querySelectorAll('.more').forEach(function(more) {
+    more.addEventListener('click', function() {
+      this.parentNode.classList.add('hidden'); // Nasconde la descrizione breve
+      this.parentNode.nextElementSibling.classList.remove('hidden'); // Mostra il testo completo
+    });
+  });
+</script>
+
+</body>
+</html>

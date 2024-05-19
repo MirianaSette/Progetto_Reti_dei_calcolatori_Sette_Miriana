@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'MovieNews/MovieLogin/styleLogin.css' %}">
+</head>
+<body class="login-body">
+
+<div class="login-container">
+  <form class="login-form">
+    <h2>Login</h2>
+    <input type="text" placeholder="User" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+    <p>Non hai un account? <a href="registrazione.html">Registrati</a></p>
+  </form>
+</div>
+
+</body>
+</html>

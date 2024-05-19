@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guida ai Canali</title>
+  {% load static %}
+<link rel="stylesheet" href="{% static 'MovieNews/HomePage/styleHome.css' %}">
+</head>
+<body>
+
+<nav class="user-menu">
+  <span>Ciao, [NomeUtente]</span>
+  <a href="logout.html">Logout</a>
+  <a href="contenuti.html" class="view-content">Contenuti Iscritti</a>
+</nav>
+
+<main>
+  <section class="channel-guide">
+    <!-- Esempio di un canale -->
+    <article class="channel">
+      <img src="cinemamovie.avif" alt="Ultime uscite Cinema">
+      <div class="channel-info">
+        <h3>Ultime uscite Cinema</h3>
+        <p class="channel-summary">Le ultime notizie dal mondo in tempo reale.</p>
+        <button class="subscribe-button">Iscriviti</button>
+      </div>
+    </article>
+    <article class="channel">
+      <img src="cinemamovie.avif" alt="Ultime uscite Cinema">
+      <div class="channel-info">
+        <h3>Ultime uscite Cinema</h3>
+        <p class="channel-summary">Le ultime notizie dal mondo in tempo reale.</p>
+        <button class="subscribe-button">Iscriviti</button>
+      </div>
+    </article>
+    <article class="channel">
+      <img src="cinemamovie.avif" alt="Ultime uscite Cinema">
+      <div class="channel-info">
+        <h3>Ultime uscite Cinema</h3>
+        <p class="channel-summary">Le ultime notizie dal mondo in tempo reale.</p>
+        <button class="subscribe-button">Iscriviti</button>
+      </div>
+    </article>
+    <!-- Ripeti per ogni canale -->
+  </section>
+</main>
+
+</body>
+</html>
