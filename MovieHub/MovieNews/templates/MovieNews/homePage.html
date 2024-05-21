@@ -10,9 +10,15 @@
 <body>
 
 <nav class="user-menu">
-  <span>Ciao, [NomeUtente]</span>
-  <a href="logout.html">Logout</a>
-  <a href="contenuti.html" class="view-content">Contenuti Iscritti</a>
+  {% if user != None %}
+  <span>Ciao, {{ user.name }}</span>
+  <a href="{% url 'login' %}">Logout</a>
+  <a href="contenuti.html" class="view-content">I tuoi contenuti</a>
+  {% endif %}
+
+  {% if user == None %}
+  <a href="{% url 'login' %}">Login</a>
+  {% endif %}
 </nav>
 
 <main>

@@ -10,13 +10,14 @@
 <body class="registration-body">
 
 <div class="registration-container">
-  <form class="registration-form">
+  <form class="registration-form" method="POST">
+    {% csrf_token %}
     <h2>Registrazione</h2>
-    <input type="text" placeholder="Nome" required>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
+    <input type="text" placeholder="Nome" name="nome" required>
+    <input type="text" placeholder="User" name="username" required>
+    <input type="password" placeholder="Password" name="password" required>
     <button type="submit">Crea Account</button>
-    <p>Hai già un account? <a href="login.html">Accedi</a></p>
+    <p>Hai già un account? <a href="{% url 'login' %}">Accedi</a></p>
   </form>
 </div>
 
