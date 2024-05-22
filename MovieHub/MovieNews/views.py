@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
-from .models import User
+from .models import User, RssFeed
 
 
 # Create your views here.
@@ -19,8 +19,10 @@ def movielog(request):
         if user:
             # confronto la password catturata con quella del DB
             if user.password == password:
-                # lo porto alla home loggata
-                return render(request, 'MovieNews/homePage.html', {'user': user})
+                # lo porto alla home loggata, caricando gli RSS Feed
+                rss_feed = RssFeed.objects.all()
+                return render(request, 'MovieNews/homePage.html',
+                              {'user': user, 'rss': rss_feed})
         # ricarico la pagina con un messaggio di errore
         else:
             return render(request, 'MovieNews/movielogin.html',
@@ -42,7 +44,9 @@ def movieregister(request):
         )
         user.save()
 
-        return render(request, 'MovieNews/homePage.html', {'user': user})
+        rss_feed = RssFeed.objects.all()
+        return render(request, 'MovieNews/homePage.html',
+                      {'user': user, 'rss': rss_feed})
 
 
     return render(request, 'MovieNews/registrazione.html')
@@ -50,7 +54,9 @@ def movieregister(request):
 
 
 def moviehome(request):
-    return render(request, 'MovieNews/homePage.html', {'user': None})
+
+    rss_feed = RssFeed.objects.all()
+    return render(request, 'MovieNews/homePage.html', {'user': None, 'rss': rss_feed})
 
 
 

@@ -23,32 +23,16 @@
 
 <main>
   <section class="channel-guide">
-    <!-- Esempio di un canale -->
+    {% for channel in rss %}
     <article class="channel">
-      <img src="cinemamovie.avif" alt="Ultime uscite Cinema">
+      <img src="{{ channel.imagine.url }}">
       <div class="channel-info">
-        <h3>Ultime uscite Cinema</h3>
-        <p class="channel-summary">Le ultime notizie dal mondo in tempo reale.</p>
+        <h3>{{ channel.channel_name }}</h3>
+        <p class="channel-summary">{{ channel.description }}</p>
         <button class="subscribe-button">Iscriviti</button>
       </div>
     </article>
-    <article class="channel">
-      <img src="cinemamovie.avif" alt="Ultime uscite Cinema">
-      <div class="channel-info">
-        <h3>Ultime uscite Cinema</h3>
-        <p class="channel-summary">Le ultime notizie dal mondo in tempo reale.</p>
-        <button class="subscribe-button">Iscriviti</button>
-      </div>
-    </article>
-    <article class="channel">
-      <img src="cinemamovie.avif" alt="Ultime uscite Cinema">
-      <div class="channel-info">
-        <h3>Ultime uscite Cinema</h3>
-        <p class="channel-summary">Le ultime notizie dal mondo in tempo reale.</p>
-        <button class="subscribe-button">Iscriviti</button>
-      </div>
-    </article>
-    <!-- Ripeti per ogni canale -->
+    {% endfor %}
   </section>
 </main>
 

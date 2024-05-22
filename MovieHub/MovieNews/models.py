@@ -22,7 +22,7 @@ class RssFeed(models.Model):
     description = models.TextField()
     imagine = models.ImageField()
     url = models.URLField()
-    users = models.ManyToManyField(User, related_name = 'rss_list')
+    users = models.ManyToManyField(User, related_name = 'rss_list', blank = True)
 
     def __str__(self):
         return self.channel_name
