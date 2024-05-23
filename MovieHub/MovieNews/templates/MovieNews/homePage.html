@@ -11,7 +11,7 @@
 
 <nav class="user-menu">
   {% if user != None %}
-  <span>Ciao, {{ user.name }}</span>
+  <span>Ciao, {{ user }}</span>
   <a href="{% url 'login' %}">Logout</a>
   <a href="contenuti.html" class="view-content">I tuoi contenuti</a>
   {% endif %}
@@ -29,7 +29,14 @@
       <div class="channel-info">
         <h3>{{ channel.channel_name }}</h3>
         <p class="channel-summary">{{ channel.description }}</p>
-        <button class="subscribe-button">Iscriviti</button>
+        {% if mex %}
+        <p class="message">{{ mex }}</p>
+        {% endif %}
+        <form method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="url_rss" value="{{ channel.url }}">
+          <button type="submit" class="subscribe-button">Iscriviti</button>
+        </form>
       </div>
     </article>
     {% endfor %}

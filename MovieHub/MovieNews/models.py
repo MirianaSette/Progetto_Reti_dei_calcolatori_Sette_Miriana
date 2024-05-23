@@ -36,7 +36,7 @@ class RssFeed(models.Model):
 class News(models.Model):
     news_title = models.TextField()
     description = models.TextField()
-    imagine = models.ImageField()
+    imagine = models.URLField
     rss_model = models.ForeignKey(RssFeed, on_delete = models.CASCADE, related_name = 'rss')   #vincolo referenziale
 
     def __str__(self):
