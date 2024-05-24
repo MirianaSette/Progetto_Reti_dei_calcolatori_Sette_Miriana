@@ -13,10 +13,11 @@
   {% if user != None %}
   <span>Ciao, {{ user }}</span>
   <a href="{% url 'login' %}">Logout</a>
-  <a href="contenuti.html" class="view-content">I tuoi contenuti</a>
+  <a href="{% url 'personal' %}" class="view-content">I tuoi contenuti</a>
   {% endif %}
 
   {% if user == None %}
+  <span>Per iscriverti ad uno dei canali presenti effettua prima l'accesso --> </span>
   <a href="{% url 'login' %}">Login</a>
   {% endif %}
 </nav>
@@ -29,13 +30,17 @@
       <div class="channel-info">
         <h3>{{ channel.channel_name }}</h3>
         <p class="channel-summary">{{ channel.description }}</p>
-        {% if mex %}
-        <p class="message">{{ mex }}</p>
-        {% endif %}
         <form method="POST">
           {% csrf_token %}
           <input type="hidden" name="url_rss" value="{{ channel.url }}">
-          <button type="submit" class="subscribe-button">Iscriviti</button>
+          {% if user != None %}
+            {% if not channel in sub_url %}
+              <button type="submit" class="subscribe-button">Iscriviti</button>
+            {% endif %}
+            {% if channel in sub_url %}
+              <button type="submit" class="unsubscribe-button">Disiscriviti</button>
+            {% endif %}
+          {% endif %}
         </form>
       </div>
     </article>

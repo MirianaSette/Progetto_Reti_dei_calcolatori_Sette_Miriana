@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog Moderno</title>
+<title>Cinemissimo news</title>
   {% load static %}
 <link rel="stylesheet" href="{% static 'MovieNews/PersonalNews/news.css' %}">
 </head>
 <body>
 
 <nav class="user-menu">
-  <span>Ciao, [NomeUtente]</span>
-  <a href="canali.html">Canali</a>
-  <a href="logout.html">Logout</a>
+  <span>Ciao, {{ username }}</span>
+  <a href="{% url 'login' %}">Logout</a>
+  <a href="{% url 'home' %}" class="view-content">Lista canali</a>
 </nav>
 
 <main class="article-container">
@@ -21,13 +21,7 @@
     <div class="article-content">
       <h2>Titolo Articolo 1</h2>
       <p class="description">Breve descrizione dell'articolo 1... <span class="more">Leggi di più</span></p>
-      <p class="full-text hidden">Testo completo dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
-        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
-        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
-        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
-        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
-        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...
-        Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...Breve descrizione dell'articolo 1...</p>
+      <p class="full-text hidden">Testo completo dell'articolo 1...Breve descrizione dell'articolo 1...</p>
     </div>
   </article>
 
