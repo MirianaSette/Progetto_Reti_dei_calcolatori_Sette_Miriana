@@ -16,23 +16,16 @@
 </nav>
 
 <main class="article-container">
+  {% for feed in news %}
   <article class="article">
-    <img src="immagini sparse/cinemafilm.jpg" alt="Descrizione Immagine 1">
+    <img src=" {{ feed.imagine }} " alt="Immagine">
     <div class="article-content">
-      <h2>Titolo Articolo 1</h2>
-      <p class="description">Breve descrizione dell'articolo 1... <span class="more">Leggi di più</span></p>
-      <p class="full-text hidden">Testo completo dell'articolo 1...Breve descrizione dell'articolo 1...</p>
+      <h2>{{ feed.news_title }}</h2>
+      <p class="description">{{ feed.short_description }} <span class="more">Leggi di più</span></p>
+      <p class="full-text hidden">{{ feed.description}}</p>
     </div>
   </article>
-
-  <article class="article">
-    <img src="immagini sparse/cinemafilm.jpg" alt="Descrizione Immagine 2">
-    <div class="article-content">
-      <h2>Titolo Articolo 2</h2>
-      <p class="description">Breve descrizione dell'articolo 2... <span class="more">Leggi di più</span></p>
-      <p class="full-text hidden">Testo completo dell'articolo 2...</p>
-    </div>
-  </article>
+  {% endfor %}
 </main>
 
 <script>

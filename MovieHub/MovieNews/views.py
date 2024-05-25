@@ -2,6 +2,7 @@ from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 
 from .models import User, RssFeed
+from .scraping import update_news
 
 
 # Create your views here.
@@ -82,13 +83,19 @@ def moviehome(request):
 
 
 def moviepersonal(request):
-    news = None
+    news = None # lista di tutte le ultime notizie aggiornate
 
     if "username" not in request.session:
         return HttpResponseNotFound("Non sei autenticato per visionare contenuti privati")
     else:
         username = request.session["username"]
         user = User.objects.get(user = username)
+        rss_list = user.rss_list.all()
+
+        if not rss_list.exists():
+            return HttpResponseNotFound("Non sei iscritto a nessun canale. Iscriviti per vedere le ultime notizie")
+        else:
+            update_news(rss_list)
 
         return render(request, 'MovieNews/personalNews.html',
                       {'news': news, 'username': username})

@@ -36,8 +36,10 @@ class RssFeed(models.Model):
 class News(models.Model):
     news_title = models.TextField()
     description = models.TextField()
+    short_description = models.TextField()
     imagine = models.URLField
-    rss_model = models.ForeignKey(RssFeed, on_delete = models.CASCADE, related_name = 'rss')   #vincolo referenziale
+    date = models.DateTimeField
+    rss_model = models.ForeignKey(RssFeed, on_delete = models.CASCADE, related_name = 'news')   #vincolo referenziale
 
     def __str__(self):
         # con rss_model si ottiene la referenza al modello news, da cui è possibile accedere ai suoi campi
