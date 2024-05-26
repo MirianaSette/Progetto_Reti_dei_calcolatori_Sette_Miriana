@@ -83,7 +83,7 @@ def moviehome(request):
 
 
 def moviepersonal(request):
-    news = None # lista di tutte le ultime notizie aggiornate
+    feeds = None
 
     if "username" not in request.session:
         return HttpResponseNotFound("Non sei autenticato per visionare contenuti privati")
@@ -96,6 +96,7 @@ def moviepersonal(request):
             return HttpResponseNotFound("Non sei iscritto a nessun canale. Iscriviti per vedere le ultime notizie")
         else:
             update_news(rss_list)
+            feeds = [channel.news.all() for channel in rss_list]
 
         return render(request, 'MovieNews/personalNews.html',
-                      {'news': news, 'username': username})
+                      {'feeds': feeds, 'username': username})

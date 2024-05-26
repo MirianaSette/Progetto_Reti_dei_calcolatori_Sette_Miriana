@@ -16,15 +16,17 @@
 </nav>
 
 <main class="article-container">
-  {% for feed in news %}
-  <article class="article">
-    <img src=" {{ feed.imagine }} " alt="Immagine">
-    <div class="article-content">
-      <h2>{{ feed.news_title }}</h2>
-      <p class="description">{{ feed.short_description }} <span class="more">Leggi di più</span></p>
-      <p class="full-text hidden">{{ feed.description}}</p>
-    </div>
-  </article>
+  {% for feed in feeds %}
+    {% for news in feed %}
+      <article class="article">
+        <img src=" {{ news.imagine }} " alt="Immagine">
+        <div class="article-content">
+          <h2>{{ news.news_title }}</h2>
+          <p class="description">{{ news.short_description }} <span class="more">Leggi di più</span></p>
+          <p class="full-text hidden">{{ news.description}}</p>
+        </div>
+      </article>
+    {% endfor %}
   {% endfor %}
 </main>
 
