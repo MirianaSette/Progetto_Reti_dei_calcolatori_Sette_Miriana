@@ -32,6 +32,7 @@ def movielog(request):
     return render(request, 'MovieNews/movielogin.html')
 
 def movieregister(request):
+    error = None
 
     if "username" in request.session:
         del request.session["username"]
@@ -41,17 +42,20 @@ def movieregister(request):
         password = request.POST.get('password')
         nome = request.POST.get('nome')
 
-        # raccolti i dati dal POST posso creare l'utente e salvarlo in DB
-        user = User.objects.create(
-            name = nome,
-            user = username,
-            password = password
-        )
-        user.save()
-        request.session["username"] = user.user
-        return redirect("home")
-
-    return render(request, 'MovieNews/registrazione.html')
+        user_exist = User.objects.filter(user=username).first()
+        if not user_exist:
+            # raccolti i dati posso creare l'utente e salvarlo in DB
+            user = User.objects.create(
+                name = nome,
+                user = username,
+                password = password
+            )
+            user.save()
+            request.session["username"] = user.user
+            return redirect("home")
+        else:
+            error = "Scegli un altro username. Questo è già registrato. "
+    return render(request, 'MovieNews/registrazione.html', {'mex': error})
 
 
 

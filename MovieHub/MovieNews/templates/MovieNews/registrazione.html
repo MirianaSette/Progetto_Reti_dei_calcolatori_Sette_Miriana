@@ -10,6 +10,9 @@
 <body class="registration-body">
 
 <div class="registration-container">
+  {% if mex %}
+    <p class="error">{{ mex }}</p>
+  {% endif %}
   <form class="registration-form" method="POST">
     {% csrf_token %}
     <h2>Registrazione</h2>
