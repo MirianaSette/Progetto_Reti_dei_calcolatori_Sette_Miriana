@@ -24,10 +24,13 @@ def movielog(request):
             if user.password == password:
                 request.session["username"] = user.user
                 return redirect("home")
+            else:
+                return render(request, 'MovieNews/movielogin.html',
+                              {'errormex': "Password errata. Riprova."})
         # ricarico la pagina con un messaggio di errore
         else:
             return render(request, 'MovieNews/movielogin.html',
-                          {'errormex': "Login fallito. Riprova."})
+                          {'errormex': "Username non esistente. Riprova."})
 
     return render(request, 'MovieNews/movielogin.html')
 
